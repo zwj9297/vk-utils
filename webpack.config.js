@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({ // 分离css
-      filename: 'vk.css',
+      filename: 'theme-chalk/[name].css',
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin()
