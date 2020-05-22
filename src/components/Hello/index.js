@@ -1,12 +1,5 @@
-import './index.less'
+import Hello from './index.vue'
 
-export default {
-  name: 'Hello',
-  render(h) {
-    return h('div', { class: 'vk-hello' }, [
-      h('div', { class: 'vk-hello__title' }, [
-        'hello world'
-      ])
-    ])
-  }
-}
+Hello.install = Vue => Vue.component('VkHello', Hello)
+
+export default Hello

@@ -1,11 +1,13 @@
-import * as components from './components'
-import './components/index.less'
+import Hello from './components/hello'
+import Say from './components/say'
+
+const components = { Hello, Say }
 
 var VuePlugin = {}
-VuePlugin.install = function(Vue, options) {
-    for(let component in components) {
-        Vue.component('Vk'+component, components[component]);
-    }
+VuePlugin.install = function(Vue) {
+  Object.keys(components).forEach(name => {
+    Vue.component('Vk'+name, components[name])
+  })
 }
 
 export default VuePlugin
