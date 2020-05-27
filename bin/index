@@ -1,8 +1,21 @@
 #!/usr/bin/env node
-
+const path = require('path')
 const program = require('commander')
-const package = require('./package.json')
+const package = require(path.resolve(__dirname, '../package.json'))
+const { create } = require('./subcommand/create')
 
-program.version(package.version, '-v, --version')
+program
+  .version(package.version, '-v, --version')
+  .usage('这是一个简单的脚手架~')
 
-program.parse(process.argv)
+program
+  .command('create <project-name>')
+  .description('create project')
+  .action(function(projectName, cmd) {
+    // console.log('新项目名：', projectName)
+    // console.log('命令执行文件所在：', __dirname)
+    // console.log('进程所在：', process.cwd())
+    create(projectName, process.cwd())
+  })
+
+  program.parse(process.argv)
